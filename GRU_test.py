@@ -1,168 +1,98 @@
-import torch
-import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader, Subset
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import time
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, r2_score
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import GRU, Dense
 
-# 1. Dataset 정의 (정규화 포함)
-class SequenceDataset(Dataset):
-    def __init__(self, csv_path, input_len=24, target_col='gpu_milli'):
-        df = pd.read_csv(csv_path)
+# 1. data load
+df = pd.read_csv("gpu_1hour.csv")
+features = ['gpu_milli', 'cpu_milli', 'memory_mib', 'num_gpu']
+target_col = 'gpu_milli'
+look_back = 24
+forecast_horizon = 24  # multi-step 예측 범위 (시간 수)
 
-        self.input_len = input_len
-        self.target_col = target_col
+# Normalize
+scaler = MinMaxScaler()
+data_scaled = scaler.fit_transform(df[features].astype('float32'))
 
-        # 정규화기 선언
-        self.scaler_X = MinMaxScaler()
-        self.scaler_y = MinMaxScaler()
+# 2. Prepare data for GRU
+def create_multistep_dataset(data, look_back=24, forecast_horizon=1):
+    X, y = [], []
+    for i in range(len(data) - look_back - forecast_horizon):
+        X.append(data[i:i+look_back])
+        y.append([data[i + look_back + j][0] for j in range(forecast_horizon)])  # gpu_milli만 예측
+    return np.array(X), np.array(y)
 
-        # 입력/출력 분리 및 정규화
-        X_raw = df[['gpu_milli', 'cpu_milli', 'memory_mib', 'num_gpu']]
-        y_raw = df[[target_col]]
+X, y = create_multistep_dataset(data_scaled, look_back, forecast_horizon)
+X = X.reshape((X.shape[0], X.shape[1], len(features)))  # (samples, timesteps, features)
 
-        self.X = self.scaler_X.fit_transform(X_raw).astype('float32')
-        self.y = self.scaler_y.fit_transform(y_raw).astype('float32').flatten()
+# 3. Build GRU model
+model = Sequential([
+    GRU(64, return_sequences=True, input_shape=(look_back, len(features))),
+    GRU(64),
+    Dense(forecast_horizon)  # 다중 시간 예측
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
 
-    def __len__(self):
-        return len(self.X) - self.input_len
-
-    def __getitem__(self, idx):
-        x = self.X[idx:idx + self.input_len]
-        y = self.y[idx + self.input_len]
-        return torch.tensor(x), torch.tensor(y)
-
-    def get_scalers(self):
-        return self.scaler_X, self.scaler_y
-
-# 2. GRU + Cross Attention 모델 정의
-class GRUEncoder(nn.Module):
-    def __init__(self, input_size, hidden_size):
-        super().__init__()
-        self.gru = nn.GRU(input_size, hidden_size, batch_first=True)
-
-    def forward(self, x):
-        out, _ = self.gru(x)
-        return out  # (B, T, H)
-
-class CrossAttention(nn.Module):
-    def __init__(self, hidden_size):
-        super().__init__()
-        self.q_proj = nn.Linear(hidden_size, hidden_size)
-        self.k_proj = nn.Linear(hidden_size, hidden_size)
-        self.v_proj = nn.Linear(hidden_size, hidden_size)
-        self.softmax = nn.Softmax(dim=-1)
-
-    def forward(self, q, k, v):
-        Q = self.q_proj(q)
-        K = self.k_proj(k)
-        V = self.v_proj(v)
-        attn_weights = self.softmax(torch.matmul(Q, K.transpose(-2, -1)) / (K.size(-1) ** 0.5))
-        return torch.matmul(attn_weights, V)
-
-class MultiGRUModel(nn.Module):
-    def __init__(self, input_size, hidden_size):
-        super().__init__()
-        self.encoders = nn.ModuleList([GRUEncoder(input_size, hidden_size) for _ in range(4)])
-        self.cross_attn = CrossAttention(hidden_size)
-        self.fc = nn.Linear(hidden_size, 1)
-
-    def forward(self, inputs):  # inputs: list of 4 tensors (B, T, F)
-        encoded = [enc(x) for enc, x in zip(self.encoders, inputs)]
-        q = encoded[0]
-        kv = torch.cat(encoded[1:], dim=1)
-        out = self.cross_attn(q, kv, kv)
-        return self.fc(out[:, -1, :]).squeeze()
-
-# 3. 데이터 불러오기 및 분할
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-paths = [
-    'gpu_dataset_part1.csv',
-    'gpu_dataset_part2.csv',
-    'gpu_dataset_part3.csv',
-    'gpu_dataset_part4.csv'
-]
-datasets = [SequenceDataset(p) for p in paths]
-
-train_loaders = []
-test_loaders = []
-scalers_y = []
-
-for ds in datasets:
-    split = int(len(ds) * 0.8)
-    train_ds = Subset(ds, range(0, split))
-    test_ds  = Subset(ds, range(split, len(ds)))
-
-    train_loaders.append(DataLoader(train_ds, batch_size=32, shuffle=True, drop_last=True))
-    test_loaders.append(DataLoader(test_ds, batch_size=32, shuffle=False, drop_last=False))
-
-    _, y_scaler = ds.get_scalers()
-    scalers_y.append(y_scaler)
-
-# 4. 모델 및 학습 설정
-model = MultiGRUModel(input_size=4, hidden_size=64).to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-criterion = nn.MSELoss()
-
-num_epochs = 10
+# 4. Train the model and measure time
 start_time = time.time()
+model.fit(X, y, epochs=50, batch_size=32, verbose=1)
+elapsed_time = time.time() - start_time
+print(f"\n🕒 Training Time: {elapsed_time:.2f}초")
 
-# 5. 학습
-for epoch in range(num_epochs):
-    model.train()
-    total_loss = 0
-    for batch1, batch2, batch3, batch4 in zip(*train_loaders):
-        xs = [batch[0].to(device) for batch in [batch1, batch2, batch3, batch4]]
-        y = batch1[1].to(device)
+# 5. Prediction and inverse transform
+preds = model.predict(X)
 
-        optimizer.zero_grad()
-        preds = model(xs)
-        loss = criterion(preds, y)
-        loss.backward()
-        optimizer.step()
-        total_loss += loss.item()
+# inverse transform of gpu_milli
+def inverse_gpu(scaled_array, scaler, n_features):
+    temp = np.zeros((len(scaled_array), n_features))
+    temp[:, 0] = scaled_array
+    return scaler.inverse_transform(temp)[:, 0]
 
-    print(f"[Epoch {epoch+1}] Loss: {total_loss:.4f}")
+preds_inv = np.array([inverse_gpu(row, scaler, len(features)) for row in preds])
+y_inv = np.array([inverse_gpu(row, scaler, len(features)) for row in y])
 
-end_time = time.time()
-print(f"\n총 학습 시간: {end_time - start_time:.2f}초")
-
-# 6. 테스트 예측 및 역정규화
-model.eval()
-all_preds, all_targets = [], []
-
-with torch.no_grad():
-    for batch1, batch2, batch3, batch4 in zip(*test_loaders):
-        xs = [batch[0].to(device) for batch in [batch1, batch2, batch3, batch4]]
-        y = batch1[1].to(device)
-        preds = model(xs)
-
-        all_preds.extend(preds.cpu().numpy())
-        all_targets.extend(y.cpu().numpy())
-
-# 7. 역정규화 및 성능 평가
-scaler_y = scalers_y[0]  # 기준 y_scaler 사용
-preds_inv = scaler_y.inverse_transform(np.array(all_preds).reshape(-1, 1)).flatten()
-targets_inv = scaler_y.inverse_transform(np.array(all_targets).reshape(-1, 1)).flatten()
-
-rmse = np.sqrt(mean_squared_error(targets_inv, preds_inv))
-r2 = r2_score(targets_inv, preds_inv)
-print(f"\nRMSE: {rmse:.4f}")
+# 6. model evaluation
+rmse = np.sqrt(mean_squared_error(y_inv[:, -1], preds_inv[:, -1]))
+r2 = r2_score(y_inv[:, -1], preds_inv[:, -1])
+print(f"RMSE: {rmse:.2f}")
 print(f"R² Score: {r2:.4f}")
 
-# 8. 시각화
-plt.figure(figsize=(12, 5))
-plt.plot(targets_inv, label='Actual (gpu_milli)', linewidth=2)
-plt.plot(preds_inv, label='Predicted (gpu_milli)', linestyle='--', linewidth=2)
-plt.xlabel("Sample")
+# 7. visualization
+plt.figure(figsize=(14, 6))
+time_axis = df['time_sec'][look_back+forecast_horizon : look_back+forecast_horizon+len(y_inv)]
+plt.plot(time_axis, y_inv[:, -1], label='Actual (last step)', linewidth=2)
+plt.plot(time_axis, preds_inv[:, -1], label='Predicted (last step)', linestyle='--', color='r')
+plt.title("GPU Usage Prediction (Within Training Range)")
+plt.xlabel("Time (sec)")
 plt.ylabel("GPU Usage (milli)")
-plt.title("GRU + Cross Attention (Test Set, Inverse-Scaled)")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-#plt.savefig("gru_prediction_plot_scaled.png") # 시각화 파일 저장
+plt.show()
+
+# 8. Future prediction
+last_input = data_scaled[-look_back:]
+last_input = last_input.reshape((1, look_back, len(features)))
+future_pred_scaled = model.predict(last_input)[0]
+
+# 역정규화
+future_pred = inverse_gpu(future_pred_scaled, scaler, len(features))
+
+# 시간 축
+last_time = df['time_sec'].iloc[-1]
+future_times = [last_time + (i + 1) * 3600 for i in range(forecast_horizon)]
+
+# 시각화
+plt.figure(figsize=(14, 6))
+plt.plot(future_times, future_pred, marker='o', label='Forecasted GPU Usage (Future)', color='purple')
+plt.title("Future GPU Usage Forecast (Next 24 Hours)")
+plt.xlabel("Time (sec)")
+plt.ylabel("GPU Usage (milli)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
 plt.show()
