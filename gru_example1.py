@@ -5,7 +5,8 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import GRU, Dense
-
+import time
+from sklearn.metrics import mean_squared_error
 
 # Load Airline Passenger dataset
 url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/airline-passengers.csv'
@@ -48,8 +49,10 @@ model_gru_ts.compile(optimizer='adam', loss='mean_squared_error')
 
 
 # Train the model
+start_time = time.time()
 model_gru_ts.fit(X, y, epochs=100, batch_size=32, verbose=1)
-
+elapsed_time = time.time() - start_time
+print(f"\n 학습 시간: {elapsed_time:.2f}초")
 
 # Make predictions
 predictions = model_gru_ts.predict(X)
@@ -59,6 +62,18 @@ predictions = model_gru_ts.predict(X)
 predictions = scaler.inverse_transform(predictions)
 y_actual = scaler.inverse_transform([y])
 
+
+# Evaluate model
+rmse = np.sqrt(mean_squared_error(y_actual[0], predictions[:, 0]))
+
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true = np.maximum(y_true, 1e-10)  # prevent division by zero
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+mape = mean_absolute_percentage_error(y_actual[0], predictions[:, 0])
+
+print(f"RMSE: {rmse:.2f}")
+print(f"MAPE: {mape:.2f}%")
 
 # Plot original data vs predictions
 plt.figure(figsize=(12,6))

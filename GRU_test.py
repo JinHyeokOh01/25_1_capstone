@@ -3,13 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_percentage_error
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import GRU, Dense
 
 # 1. data load
 df = pd.read_csv("gpu_1hour.csv")
-features = ['gpu_milli', 'cpu_milli', 'memory_mib', 'num_gpu']
+features = ['gpu_milli', 'num_gpu']
 target_col = 'gpu_milli'
 look_back = 24
 forecast_horizon = 24  # multi-step 예측 범위 (시간 수)
@@ -31,15 +31,15 @@ X = X.reshape((X.shape[0], X.shape[1], len(features)))  # (samples, timesteps, f
 
 # 3. Build GRU model
 model = Sequential([
-    GRU(64, return_sequences=True, input_shape=(look_back, len(features))),
-    GRU(64),
-    Dense(forecast_horizon)  # 다중 시간 예측
+    GRU(50, return_sequences=True, input_shape=(look_back, len(features))),
+    GRU(50),
+    Dense(forecast_horizon)
 ])
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # 4. Train the model and measure time
 start_time = time.time()
-model.fit(X, y, epochs=50, batch_size=32, verbose=1)
+model.fit(X, y, epochs=100, batch_size=32, verbose=1)
 elapsed_time = time.time() - start_time
 print(f"\n🕒 Training Time: {elapsed_time:.2f}초")
 
@@ -58,8 +58,11 @@ y_inv = np.array([inverse_gpu(row, scaler, len(features)) for row in y])
 # 6. model evaluation
 rmse = np.sqrt(mean_squared_error(y_inv[:, -1], preds_inv[:, -1]))
 r2 = r2_score(y_inv[:, -1], preds_inv[:, -1])
+mape = mean_absolute_percentage_error(y_inv[:, -1], preds_inv[:, -1]) * 100
+
 print(f"RMSE: {rmse:.2f}")
 print(f"R² Score: {r2:.4f}")
+print(f"MAPE: {mape:.2f}%")
 
 # 7. visualization
 plt.figure(figsize=(14, 6))
