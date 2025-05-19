@@ -21,6 +21,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
 from scipy.stats import mannwhitneyu
 
+import time
 
 def GRU_Model(output_window):
   model = Sequential()
@@ -125,7 +126,10 @@ gru_model = GRU_Model(f)
 epochs = 200
 
 # Train GRU model
+start_time = time.time()
 gru_trained = gru_model.fit(trainX, trainY, shuffle=True, epochs=epochs)
+training_time = time.time() - start_time
+print(f"Training time: {training_time:.2f} seconds")
 
 #Testing
 s=(10,6) 
@@ -147,10 +151,17 @@ for j in range(0,10):
 
 
 print('Mean values')
-np.mean(s, axis=0)
+print(np.mean(s, axis=0))
+
+print(f'GRU RMSE: {np.mean(s[:,1]):.4f}, STD: {np.std(s[:,1]):.4f}')
+print(f'Baseline RMSE: {np.mean(s[:,2]):.4f}, STD: {np.std(s[:,2]):.4f}')
+print(f'GRU MDA: {np.mean(s[:,4]):.4f}, STD: {np.std(s[:,4]):.4f}')
+print(f'Baseline MDA: {np.mean(s[:,5]):.4f}, STD: {np.std(s[:,5]):.4f}')
+print(f'GRU MAPE: {np.mean(s[:,6]):.2f}%, STD: {np.std(s[:,6]):.2f}%')
+print(f'Baseline MAPE: {np.mean(s[:,7]):.2f}%, STD: {np.std(s[:,7]):.2f}%')
 
 print('Standard Deviation')
-np.std(s, axis=0)
+print(np.std(s, axis=0))
 
 print('Statistical tests')
 statisticaltests(s)
