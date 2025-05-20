@@ -5,7 +5,7 @@ import numpy as np
 df = pd.read_csv('openb_pod_list_default.csv')
 
 # 2. 1시간(3600초) 단위 설정
-step_sec = 3600
+step_sec = 3600 * 1
 
 # 3. 전체 시간 범위 계산 (시작은 내림, 끝은 올림)
 start_time = (df['creation_time'].min() // step_sec) * step_sec
