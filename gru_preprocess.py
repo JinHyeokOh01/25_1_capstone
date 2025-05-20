@@ -4,8 +4,8 @@ import numpy as np
 # 1. 데이터 불러오기 (creation_time, deletion_time은 초 단위 상대값)
 df = pd.read_csv('openb_pod_list_default.csv')
 
-# 2. 1시간(3600초) 단위 설정
-step_sec = 3600 * 1
+# 2. second 설정 (3600초 = 1시간)
+step_sec = 1
 
 # 3. 전체 시간 범위 계산 (시작은 내림, 끝은 올림)
 start_time = (df['creation_time'].min() // step_sec) * step_sec
@@ -29,7 +29,7 @@ for t_start in time_bins[:-1]:
 
 # 6. DataFrame 생성 및 저장
 usage_df = pd.DataFrame.from_records(records)
-usage_df.to_csv('gpu_1hour.csv', index=False)
+usage_df.to_csv('gpu_1sec.csv', index=False)
 
-print("✅ 1시간 단위(초 기준) 시계열 데이터 생성 완료!")
+print("✅ 1초 단위(초 기준) 시계열 데이터 생성 완료!")
 print(usage_df.head())
