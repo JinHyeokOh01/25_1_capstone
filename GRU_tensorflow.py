@@ -92,7 +92,7 @@ future_times = [last_time + (i + 1) * 3600 for i in range(forecast_horizon)]
 # 시각화
 plt.figure(figsize=(14, 6))
 plt.plot(future_times, future_pred, marker='o', label='Forecasted GPU Usage (Future)', color='purple')
-plt.title("Future GPU Usage Forecast (Next 24 Hours)")
+plt.title("Future GPU Usage Forecast (Next 24 Steps)")
 plt.xlabel("Time (sec)")
 plt.ylabel("GPU Usage (milli)")
 plt.grid(True)
