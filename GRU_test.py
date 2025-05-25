@@ -8,7 +8,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import GRU, Dense
 
 # 1. data load
-df = pd.read_csv("gpu_1hour.csv")
+df = pd.read_csv("gpu_30sec.csv")
 features = ['gpu_milli', 'num_gpu']
 target_col = 'gpu_milli'
 look_back = 24
