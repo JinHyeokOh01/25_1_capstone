@@ -32,6 +32,6 @@ python -c "import pandas as pd; print(pd.__version__)"
 
 
 
-python GRU_test.py
+python GRU_torch.py
 
 exit 0
