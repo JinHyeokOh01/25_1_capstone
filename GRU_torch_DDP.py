@@ -125,15 +125,15 @@ def train_ddp(rank, world_size):
     cleanup()
 
 # ---------- LINUX Entry ----------
-# if __name__ == "__main__":
-#     rank = int(os.environ["RANK"])
-#     world_size = int(os.environ["WORLD_SIZE"])
-#     main(rank, world_size)
+if __name__ == "__main__":
+    rank = int(os.environ["RANK"])
+    world_size = int(os.environ["WORLD_SIZE"])
+    train_ddp(rank, world_size)
 
 # To run this script, use the following command:
 # torchrun --nproc_per_node=4 GRU_torch_DDP.py
 
-# ---------- Windows Entry ----------
-if __name__ == "__main__": 
-    world_size = torch.cuda.device_count()  # ex. 2 or more
-    mp.spawn(train_ddp, args=(world_size,), nprocs=world_size, join=True)
+# # ---------- Windows Entry ----------
+# if __name__ == "__main__": 
+#     world_size = torch.cuda.device_count()  # ex. 2 or more
+#     mp.spawn(train_ddp, args=(world_size,), nprocs=world_size, join=True)
