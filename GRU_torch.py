@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_percenta
 from sklearn.model_selection import train_test_split
 
 # 1. Data Load
-df = pd.read_csv("gpu_1hour.csv")
+df = pd.read_csv("dataset/gpu_1hour.csv")
 features = ['gpu_milli', 'num_gpu']
 target_col = 'gpu_milli'
 look_back = 24
@@ -61,7 +61,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 4. Train the model
 start_time = time.time()
-epochs = 100
+epochs = 50
 batch_size = 32
 
 for epoch in range(epochs):
@@ -102,6 +102,26 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+# 6. Model Evaluation
+preds_test = model(X_test).detach().numpy()
+y_test_inv = np.array([inverse_gpu(row, scaler, len(features)) for row in y_test.numpy()])
+preds_test_inv = np.array([inverse_gpu(row, scaler, len(features)) for row in preds_test])
+
+# RMSE (Root Mean Squared Error)
+rmse = np.sqrt(mean_squared_error(y_test_inv[:, -1], preds_test_inv[:, -1]))
+
+# R² Score
+r2 = r2_score(y_test_inv[:, -1], preds_test_inv[:, -1])
+
+# MAPE (Mean Absolute Percentage Error)
+mape = mean_absolute_percentage_error(y_test_inv[:, -1], preds_test_inv[:, -1]) * 100
+
+# Print Evaluation Metrics
+print(f"\n🔹 Model Evaluation Metrics:")
+print(f"RMSE: {rmse:.2f}")
+print(f"R² Score: {r2:.4f}")
+print(f"MAPE: {mape:.2f}%")
 
 # 6. Future prediction
 last_input = torch.tensor(data_scaled[-look_back:], dtype=torch.float32).reshape((1, look_back, len(features)))
