@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_percenta
 from sklearn.model_selection import train_test_split
 
 # 1. Data Load
-df = pd.read_csv("dataset/gpu_10min.csv")
+df = pd.read_csv("dataset/gpu_1hour.csv")
 
 # 변화율
 df['gpu_milli_diff'] = df['gpu_milli'].diff().fillna(0)
@@ -70,7 +70,7 @@ criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 5. Training loop (Train + Validation Loss 추적)
-epochs = 40
+epochs = 500
 train_losses = []
 val_losses = []
 start_time = time.time()
