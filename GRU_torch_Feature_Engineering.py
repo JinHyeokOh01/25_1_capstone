@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_percenta
 from sklearn.model_selection import train_test_split
 
 # 1. Data Load
-df = pd.read_csv("dataset/gpu_1hour.csv")
+df = pd.read_csv("dataset/gpu_10min.csv")
 
 # 변화율
 df['gpu_milli_diff'] = df['gpu_milli'].diff().fillna(0)
@@ -70,7 +70,7 @@ criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # 5. Training loop (Train + Validation Loss 추적)
-epochs = 50
+epochs = 40
 train_losses = []
 val_losses = []
 start_time = time.time()
@@ -108,6 +108,22 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+# 6-1. 오버피팅/언더피팅 판단
+def check_overfitting(train_losses, val_losses):
+    final_train = train_losses[-1]
+    final_val = val_losses[-1]
+    gap = abs(final_val - final_train)
+
+    print("\n🔍 Overfitting/Underfitting Check:")
+    print(f"final_train_loss: {final_train:.4f}")
+    print(f"final_val_loss: {final_val:.4f}")
+    print(f"gap: {gap:.4f}")
+
+
+# 호출
+check_overfitting(train_losses, val_losses)
+
 
 # 7. 예측 후 역정규화
 def inverse_gpu(scaled_array, scaler, n_features):

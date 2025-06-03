@@ -1,3 +1,5 @@
+# 데이터 분할 후 시각화용 코드
+
 import pandas as pd
 import numpy as np
 
