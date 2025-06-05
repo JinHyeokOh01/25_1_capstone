@@ -1,0 +1,22 @@
+gpu_336-96 결과 Tue 20 May 2025 06:13:39 AM KST
+==========================================================
+실행 설정: gpu_336-96
+시작 시간: Tue 20 May 2025 06:13:39 AM KST
+==========================================================
+python: can't open file '../singlecard.py': [Errno 2] No such file or directory
+
+gpu_336-192 결과 Tue 20 May 2025 06:13:40 AM KST
+==========================================================
+실행 설정: gpu_336-192
+시작 시간: Tue 20 May 2025 06:13:39 AM KST
+==========================================================
+python: can't open file '../singlecard.py': [Errno 2] No such file or directory
+
+gpu_336-336 결과 Tue 20 May 2025 06:13:40 AM KST
+==========================================================
+실행 설정: gpu_336-336
+시작 시간: Tue 20 May 2025 06:13:40 AM KST
+==========================================================
+python: can't open file '../singlecard.py': [Errno 2] No such file or directory
+
+    

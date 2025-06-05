@@ -1,0 +1,64 @@
+시작 시간: Sat 24 May 2025 05:55:37 PM KST
+실행 노드: moana-r4
+GPU 정보: GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-8e2d02c5-6c7c-eef2-d9bc-3db3e5402277)
+==========================================================
+실행 설정: gpu_336-96
+시작 시간: Sat 24 May 2025 05:55:37 PM KST
+==========================================================
+Traceback (most recent call last):
+  File "/data/dhwlsgur795/repos/25_1_capstone/scripts/../singlecard.py", line 1, in <module>
+    from experiments.exp_ETT import Exp_ETT
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 6, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+/var/spool/slurm/d/job86580/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sat 24 May 2025 05:55:37 PM KST
+
+==========================================================
+실행 설정: gpu_336-192
+시작 시간: Sat 24 May 2025 05:55:37 PM KST
+==========================================================
+Traceback (most recent call last):
+  File "/data/dhwlsgur795/repos/25_1_capstone/scripts/../singlecard.py", line 1, in <module>
+    from experiments.exp_ETT import Exp_ETT
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 6, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+/var/spool/slurm/d/job86580/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sat 24 May 2025 05:55:38 PM KST
+
+==========================================================
+실행 설정: gpu_336-336
+시작 시간: Sat 24 May 2025 05:55:38 PM KST
+==========================================================
+Traceback (most recent call last):
+  File "/data/dhwlsgur795/repos/25_1_capstone/scripts/../singlecard.py", line 1, in <module>
+    from experiments.exp_ETT import Exp_ETT
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 6, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+/var/spool/slurm/d/job86580/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sat 24 May 2025 05:55:38 PM KST
+
+==========================================================
+실행 설정: gpu_336-720
+시작 시간: Sat 24 May 2025 05:55:38 PM KST
+==========================================================
+Traceback (most recent call last):
+  File "/data/dhwlsgur795/repos/25_1_capstone/scripts/../singlecard.py", line 1, in <module>
+    from experiments.exp_ETT import Exp_ETT
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 6, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+/var/spool/slurm/d/job86580/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job86580/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sat 24 May 2025 05:55:38 PM KST
+
+모든 실험 완료: Sat 24 May 2025 05:55:38 PM KST

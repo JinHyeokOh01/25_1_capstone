@@ -1,0 +1,93 @@
+시작 시간: Sat 24 May 2025 06:09:34 PM KST
+실행 노드: moana-r4
+GPU 정보: GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-8e2d02c5-6c7c-eef2-d9bc-3db3e5402277)
+==========================================================
+실행 설정: gpu_336-96
+시작 시간: Sat 24 May 2025 06:09:34 PM KST
+==========================================================
+test 622
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 2078
+val 264
+test 622
+exp/run_GPU_336_96/DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 10.375996828079224
+--------start to validate-----------
+Traceback (most recent call last):
+  File "../singlecard.py", line 128, in <module>
+    exp.train(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 219, in train
+    valid_loss, valid_mae, valid_mse, valid_rmse, valid_mape = self.valid(valid_loader, criterion, flag="valid")
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 267, in valid
+    mae, mse, rmse, mape, mspe, corr = metric_(preds, trues)
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/ETTh_metrics.py", line 43, in metric_
+    corr = Corr(pred, true)
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/ETTh_metrics.py", line 18, in Corr
+    corr = (corr[ind]).mean()
+IndexError: boolean index did not match indexed array along dimension 1; dimension is 2 but corresponding boolean dimension is 1
+완료 시간: Sat 24 May 2025 06:09:52 PM KST
+
+==========================================================
+실행 설정: gpu_336-192
+시작 시간: Sat 24 May 2025 06:09:52 PM KST
+==========================================================
+test 526
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1982
+val 168
+test 526
+exp/run_GPU_336_192/DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 9.990923404693604
+--------start to validate-----------
+Traceback (most recent call last):
+  File "../singlecard.py", line 128, in <module>
+    exp.train(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 219, in train
+    valid_loss, valid_mae, valid_mse, valid_rmse, valid_mape = self.valid(valid_loader, criterion, flag="valid")
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 267, in valid
+    mae, mse, rmse, mape, mspe, corr = metric_(preds, trues)
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/ETTh_metrics.py", line 43, in metric_
+    corr = Corr(pred, true)
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/ETTh_metrics.py", line 18, in Corr
+    corr = (corr[ind]).mean()
+IndexError: boolean index did not match indexed array along dimension 1; dimension is 2 but corresponding boolean dimension is 1
+완료 시간: Sat 24 May 2025 06:10:09 PM KST
+
+==========================================================
+실행 설정: gpu_336-336
+시작 시간: Sat 24 May 2025 06:10:09 PM KST
+==========================================================
+test 382
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl336_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1838
+val 24
+test 382
+exp/run_GPU_336_336/DPAD_GCN_gpu_ftM_sl336_pl336_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 9.637502193450928
+--------start to validate-----------
+Traceback (most recent call last):
+  File "../singlecard.py", line 128, in <module>
+    exp.train(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 219, in train
+    valid_loss, valid_mae, valid_mse, valid_rmse, valid_mape = self.valid(valid_loader, criterion, flag="valid")
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 263, in valid
+    preds = np.concatenate(preds, axis=0)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: need at least one array to concatenate
+완료 시간: Sat 24 May 2025 06:10:25 PM KST
+
+==========================================================
+실행 설정: gpu_336-720
+시작 시간: Sat 24 May 2025 06:10:25 PM KST
+==========================================================
+Traceback (most recent call last):
+  File "../singlecard.py", line 126, in <module>
+    exp = Exp(args)  # set experiments
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 28, in __init__
+    self.test_loader = self._get_data(flag = 'test')
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 139, in _get_data
+    print(flag, len(data_set))
+ValueError: __len__() should return >= 0
+완료 시간: Sat 24 May 2025 06:10:30 PM KST
+
+모든 실험 완료: Sat 24 May 2025 06:10:30 PM KST
