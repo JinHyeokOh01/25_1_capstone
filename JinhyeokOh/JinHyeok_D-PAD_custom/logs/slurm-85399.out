@@ -1,0 +1,380 @@
+시작 시간: Sun 18 May 2025 01:22:10 AM KST
+실행 노드: moana-r4
+GPU 정보: GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-05a8230b-1c8a-2bd5-fee4-6e1fdf92a8cb)
+==========================================================
+실행 설정: gpu_336-96
+시작 시간: Sun 18 May 2025 01:22:10 AM KST
+==========================================================
+test 622
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 2078
+val 264
+test 622
+exp/run_GPU_336_96/DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 14.691930770874023
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.9125 | mae:1.1008 | rmse:1.7066 | mape:0.2263 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:6.9085 | mae:2.1679 | rmse:2.6284 | mape:0.2846 |
+Epoch: 1 | Train Loss: 0.1537387 | Valid Loss: 1.1007650 Valid Metrics: [mae: 1.1007651, mse: 2.9125192, rmse: 1.7066104, mape: 0.2262697]
+Epoch: 1 | Test Loss: 2.1679298 Test Metrics: [mae: 2.1679299, mse: 6.9084716, rmse: 2.6283972, mape: 0.2845629]
+Validation loss decreased (inf --> 1.100765).  Saving model ...
+Updating learning rate to 9.5e-05
+Epoch: 2 cost time: 6.8841681480407715
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.7989 | mae:1.0660 | rmse:1.6730 | mape:0.2206 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:9.5051 | mae:2.5056 | rmse:3.0830 | mape:0.3305 |
+Epoch: 2 | Train Loss: 0.1050664 | Valid Loss: 1.0659686 Valid Metrics: [mae: 1.0659686, mse: 2.7988551, rmse: 1.6729779, mape: 0.2206392]
+Epoch: 2 | Test Loss: 2.5055892 Test Metrics: [mae: 2.5055892, mse: 9.5051336, rmse: 3.0830398, mape: 0.3305019]
+Validation loss decreased (1.100765 --> 1.065969).  Saving model ...
+Updating learning rate to 9.025e-05
+Epoch: 3 cost time: 6.817516088485718
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6901 | mae:1.0382 | rmse:1.6401 | mape:0.2145 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:8.1818 | mae:2.3331 | rmse:2.8604 | mape:0.3073 |
+Epoch: 3 | Train Loss: 0.0859178 | Valid Loss: 1.0381556 Valid Metrics: [mae: 1.0381557, mse: 2.6900609, rmse: 1.6401405, mape: 0.2144833]
+Epoch: 3 | Test Loss: 2.3331408 Test Metrics: [mae: 2.3331409, mse: 8.1818390, rmse: 2.8603914, mape: 0.3072714]
+Validation loss decreased (1.065969 --> 1.038156).  Saving model ...
+Updating learning rate to 8.573749999999999e-05
+Epoch: 4 cost time: 6.7916693687438965
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6453 | mae:1.0224 | rmse:1.6265 | mape:0.2082 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:8.4642 | mae:2.3622 | rmse:2.9093 | mape:0.3103 |
+Epoch: 4 | Train Loss: 0.0827529 | Valid Loss: 1.0223854 Valid Metrics: [mae: 1.0223855, mse: 2.6453440, rmse: 1.6264514, mape: 0.2082110]
+Epoch: 4 | Test Loss: 2.3621893 Test Metrics: [mae: 2.3621893, mse: 8.4641829, rmse: 2.9093268, mape: 0.3102789]
+Validation loss decreased (1.038156 --> 1.022385).  Saving model ...
+Updating learning rate to 8.1450625e-05
+Epoch: 5 cost time: 6.774900197982788
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.5575 | mae:0.9893 | rmse:1.5992 | mape:0.2009 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.4251 | mae:2.7486 | rmse:3.3801 | mape:0.3617 |
+Epoch: 5 | Train Loss: 0.0779069 | Valid Loss: 0.9893316 Valid Metrics: [mae: 0.9893315, mse: 2.5575321, rmse: 1.5992286, mape: 0.2009131]
+Epoch: 5 | Test Loss: 2.7485837 Test Metrics: [mae: 2.7485838, mse: 11.4251041, rmse: 3.3801041, mape: 0.3617182]
+Validation loss decreased (1.022385 --> 0.989332).  Saving model ...
+Updating learning rate to 7.737809374999998e-05
+Epoch: 6 cost time: 6.8044962882995605
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6837 | mae:1.0315 | rmse:1.6382 | mape:0.2110 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:10.6623 | mae:2.6339 | rmse:3.2653 | mape:0.3457 |
+Epoch: 6 | Train Loss: 0.0772755 | Valid Loss: 1.0314593 Valid Metrics: [mae: 1.0314592, mse: 2.6836765, rmse: 1.6381930, mape: 0.2109990]
+Epoch: 6 | Test Loss: 2.6339084 Test Metrics: [mae: 2.6339085, mse: 10.6622801, rmse: 3.2653148, mape: 0.3456893]
+EarlyStopping counter: 1 out of 5
+Updating learning rate to 7.350918906249998e-05
+Epoch: 7 cost time: 6.807292938232422
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6766 | mae:1.0282 | rmse:1.6360 | mape:0.2090 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.1979 | mae:2.6888 | rmse:3.3463 | mape:0.3527 |
+Epoch: 7 | Train Loss: 0.0750225 | Valid Loss: 1.0282041 Valid Metrics: [mae: 1.0282041, mse: 2.6765845, rmse: 1.6360271, mape: 0.2089825]
+Epoch: 7 | Test Loss: 2.6888159 Test Metrics: [mae: 2.6888161, mse: 11.1979208, rmse: 3.3463295, mape: 0.3526508]
+EarlyStopping counter: 2 out of 5
+Updating learning rate to 6.983372960937497e-05
+Epoch: 8 cost time: 6.841061592102051
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.4623 | mae:0.9704 | rmse:1.5692 | mape:0.1989 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.1254 | mae:2.6864 | rmse:3.3355 | mape:0.3524 |
+Epoch: 8 | Train Loss: 0.0718136 | Valid Loss: 0.9703709 Valid Metrics: [mae: 0.9703708, mse: 2.4623306, rmse: 1.5691814, mape: 0.1988895]
+Epoch: 8 | Test Loss: 2.6864173 Test Metrics: [mae: 2.6864169, mse: 11.1253719, rmse: 3.3354719, mape: 0.3524239]
+Validation loss decreased (0.989332 --> 0.970371).  Saving model ...
+Updating learning rate to 6.634204312890623e-05
+Epoch: 9 cost time: 6.776276111602783
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6002 | mae:1.0077 | rmse:1.6125 | mape:0.2047 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.7954 | mae:2.7441 | rmse:3.4344 | mape:0.3590 |
+Epoch: 9 | Train Loss: 0.0706447 | Valid Loss: 1.0076843 Valid Metrics: [mae: 1.0076844, mse: 2.6002223, rmse: 1.6125205, mape: 0.2046688]
+Epoch: 9 | Test Loss: 2.7440886 Test Metrics: [mae: 2.7440884, mse: 11.7954245, rmse: 3.4344468, mape: 0.3590470]
+EarlyStopping counter: 1 out of 5
+Updating learning rate to 6.30249409724609e-05
+Epoch: 10 cost time: 6.816133260726929
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6653 | mae:1.0335 | rmse:1.6326 | mape:0.2105 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.0091 | mae:2.6630 | rmse:3.3180 | mape:0.3487 |
+Epoch: 10 | Train Loss: 0.0709302 | Valid Loss: 1.0335177 Valid Metrics: [mae: 1.0335177, mse: 2.6653275, rmse: 1.6325831, mape: 0.2104910]
+Epoch: 10 | Test Loss: 2.6629821 Test Metrics: [mae: 2.6629820, mse: 11.0091066, rmse: 3.3179975, mape: 0.3486728]
+EarlyStopping counter: 2 out of 5
+Updating learning rate to 5.987369392383787e-05
+Epoch: 11 cost time: 6.800981283187866
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.6545 | mae:1.0185 | rmse:1.6293 | mape:0.2056 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:10.7208 | mae:2.6311 | rmse:3.2743 | mape:0.3445 |
+Epoch: 11 | Train Loss: 0.0690833 | Valid Loss: 1.0184798 Valid Metrics: [mae: 1.0184797, mse: 2.6545169, rmse: 1.6292689, mape: 0.2056140]
+Epoch: 11 | Test Loss: 2.6311246 Test Metrics: [mae: 2.6311247, mse: 10.7207737, rmse: 3.2742593, mape: 0.3445429]
+EarlyStopping counter: 3 out of 5
+Updating learning rate to 5.688000922764597e-05
+Epoch: 12 cost time: 6.813517093658447
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.5505 | mae:0.9886 | rmse:1.5970 | mape:0.2002 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:12.7978 | mae:2.8691 | rmse:3.5774 | mape:0.3756 |
+Epoch: 12 | Train Loss: 0.0682169 | Valid Loss: 0.9886218 Valid Metrics: [mae: 0.9886219, mse: 2.5505228, rmse: 1.5970356, mape: 0.2002160]
+Epoch: 12 | Test Loss: 2.8690735 Test Metrics: [mae: 2.8690734, mse: 12.7978020, rmse: 3.5774016, mape: 0.3755611]
+EarlyStopping counter: 4 out of 5
+Updating learning rate to 5.403600876626367e-05
+Epoch: 13 cost time: 6.795760154724121
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:2.5698 | mae:0.9941 | rmse:1.6031 | mape:0.2017 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:11.7027 | mae:2.7418 | rmse:3.4209 | mape:0.3586 |
+Epoch: 13 | Train Loss: 0.0684642 | Valid Loss: 0.9941235 Valid Metrics: [mae: 0.9941235, mse: 2.5698240, rmse: 1.6030670, mape: 0.2017000]
+Epoch: 13 | Test Loss: 2.7417565 Test Metrics: [mae: 2.7417562, mse: 11.7026901, rmse: 3.4209194, mape: 0.3586255]
+EarlyStopping counter: 5 out of 5
+Early stopping
+save model in  exp/run_GPU_336_96/DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0/gpu96.bin
+>>>>>>>testing : DPAD_GCN_gpu_ftM_sl336_pl96_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Test Results:
+|  Normed  | mse:11.7027 | mae:2.7418 | rmse:3.4209 | mape:0.3586 | mspe:0.2263 | corr:0.2276 |
+Traceback (most recent call last):
+  File "../singlecard.py", line 131, in <module>
+    mse, mae, rmse, mape = exp.test(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 324, in test
+    visual(trues, preds, os.path.join(result_path, 'result.pdf'))
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/tools.py", line 116, in visual
+    plt.plot(true, label='GroundTruth', linewidth=1.5, color="#999999")
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/pyplot.py", line 2728, in plot
+    return gca().plot(
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_axes.py", line 1662, in plot
+    lines = [*self._get_lines(*args, data=data, **kwargs)]
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_base.py", line 311, in __call__
+    yield from self._plot_args(
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_base.py", line 507, in _plot_args
+    raise ValueError(f"x and y can be no greater than 2D, but have "
+ValueError: x and y can be no greater than 2D, but have shapes (608,) and (608, 96, 2)
+/var/spool/slurm/d/job85399/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sun 18 May 2025 01:24:19 AM KST
+
+==========================================================
+실행 설정: gpu_336-192
+시작 시간: Sun 18 May 2025 01:24:19 AM KST
+==========================================================
+test 526
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1982
+val 168
+test 526
+exp/run_GPU_336_192/DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 10.073013544082642
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:5.1093 | mae:1.5842 | rmse:2.2604 | mape:0.3425 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:7.6377 | mae:2.2388 | rmse:2.7636 | mape:0.2960 |
+Epoch: 1 | Train Loss: 0.2134092 | Valid Loss: 1.5841969 Valid Metrics: [mae: 1.5841969, mse: 5.1093211, rmse: 2.2603807, mape: 0.3424801]
+Epoch: 1 | Test Loss: 2.2388025 Test Metrics: [mae: 2.2388022, mse: 7.6376743, rmse: 2.7636342, mape: 0.2959855]
+Validation loss decreased (inf --> 1.584197).  Saving model ...
+Updating learning rate to 9.5e-05
+Epoch: 2 cost time: 6.570841312408447
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.9284 | mae:1.3397 | rmse:1.9820 | mape:0.2912 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:19.7068 | mae:3.5844 | rmse:4.4392 | mape:0.4652 |
+Epoch: 2 | Train Loss: 0.1405599 | Valid Loss: 1.3396756 Valid Metrics: [mae: 1.3396755, mse: 3.9284353, rmse: 1.9820281, mape: 0.2912494]
+Epoch: 2 | Test Loss: 3.5843505 Test Metrics: [mae: 3.5843508, mse: 19.7068157, rmse: 4.4392362, mape: 0.4652471]
+Validation loss decreased (1.584197 --> 1.339676).  Saving model ...
+Updating learning rate to 9.025e-05
+Epoch: 3 cost time: 6.554720640182495
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.7313 | mae:1.2963 | rmse:1.9317 | mape:0.2856 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:28.7987 | mae:4.2124 | rmse:5.3664 | mape:0.5364 |
+Epoch: 3 | Train Loss: 0.1290530 | Valid Loss: 1.2963183 Valid Metrics: [mae: 1.2963183, mse: 3.7312963, rmse: 1.9316564, mape: 0.2855505]
+Epoch: 3 | Test Loss: 4.2124268 Test Metrics: [mae: 4.2124267, mse: 28.7986736, rmse: 5.3664393, mape: 0.5364457]
+Validation loss decreased (1.339676 --> 1.296318).  Saving model ...
+Updating learning rate to 8.573749999999999e-05
+Epoch: 4 cost time: 6.550935745239258
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.6922 | mae:1.2783 | rmse:1.9215 | mape:0.2792 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:30.7919 | mae:4.3694 | rmse:5.5490 | mape:0.5572 |
+Epoch: 4 | Train Loss: 0.1198266 | Valid Loss: 1.2782870 Valid Metrics: [mae: 1.2782872, mse: 3.6921570, rmse: 1.9214987, mape: 0.2792015]
+Epoch: 4 | Test Loss: 4.3693568 Test Metrics: [mae: 4.3693576, mse: 30.7918854, rmse: 5.5490437, mape: 0.5571604]
+Validation loss decreased (1.296318 --> 1.278287).  Saving model ...
+Updating learning rate to 8.1450625e-05
+Epoch: 5 cost time: 6.665787696838379
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.6447 | mae:1.2765 | rmse:1.9091 | mape:0.2775 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:35.2573 | mae:4.6750 | rmse:5.9378 | mape:0.5945 |
+Epoch: 5 | Train Loss: 0.1164917 | Valid Loss: 1.2765250 Valid Metrics: [mae: 1.2765250, mse: 3.6446786, rmse: 1.9091041, mape: 0.2775221]
+Epoch: 5 | Test Loss: 4.6749780 Test Metrics: [mae: 4.6749778, mse: 35.2572861, rmse: 5.9377847, mape: 0.5944912]
+Validation loss decreased (1.278287 --> 1.276525).  Saving model ...
+Updating learning rate to 7.737809374999998e-05
+Epoch: 6 cost time: 6.578153848648071
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.5019 | mae:1.2169 | rmse:1.8713 | mape:0.2597 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:43.3609 | mae:5.1375 | rmse:6.5849 | mape:0.6526 |
+Epoch: 6 | Train Loss: 0.1146232 | Valid Loss: 1.2168761 Valid Metrics: [mae: 1.2168759, mse: 3.5019114, rmse: 1.8713394, mape: 0.2596665]
+Epoch: 6 | Test Loss: 5.1375395 Test Metrics: [mae: 5.1375394, mse: 43.3608742, rmse: 6.5848975, mape: 0.6525691]
+Validation loss decreased (1.276525 --> 1.216876).  Saving model ...
+Updating learning rate to 7.350918906249998e-05
+Epoch: 7 cost time: 6.5886383056640625
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.7385 | mae:1.2752 | rmse:1.9335 | mape:0.2732 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:37.1283 | mae:4.6864 | rmse:6.0933 | mape:0.5945 |
+Epoch: 7 | Train Loss: 0.1112946 | Valid Loss: 1.2752223 Valid Metrics: [mae: 1.2752224, mse: 3.7384639, rmse: 1.9335108, mape: 0.2732139]
+Epoch: 7 | Test Loss: 4.6864150 Test Metrics: [mae: 4.6864147, mse: 37.1283417, rmse: 6.0933032, mape: 0.5944535]
+EarlyStopping counter: 1 out of 5
+Updating learning rate to 6.983372960937497e-05
+Epoch: 8 cost time: 6.568872928619385
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.5753 | mae:1.2383 | rmse:1.8909 | mape:0.2649 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:59.4126 | mae:5.7961 | rmse:7.7080 | mape:0.7279 |
+Epoch: 8 | Train Loss: 0.1103991 | Valid Loss: 1.2382550 Valid Metrics: [mae: 1.2382549, mse: 3.5753188, rmse: 1.8908514, mape: 0.2648753]
+Epoch: 8 | Test Loss: 5.7961361 Test Metrics: [mae: 5.7961354, mse: 59.4126244, rmse: 7.7079587, mape: 0.7279217]
+EarlyStopping counter: 2 out of 5
+Updating learning rate to 6.634204312890623e-05
+Epoch: 9 cost time: 6.58980655670166
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.7824 | mae:1.2780 | rmse:1.9448 | mape:0.2719 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:54.0583 | mae:5.5405 | rmse:7.3524 | mape:0.6973 |
+Epoch: 9 | Train Loss: 0.1083348 | Valid Loss: 1.2779936 Valid Metrics: [mae: 1.2779937, mse: 3.7824152, rmse: 1.9448432, mape: 0.2718503]
+Epoch: 9 | Test Loss: 5.5404897 Test Metrics: [mae: 5.5404892, mse: 54.0582886, rmse: 7.3524342, mape: 0.6973018]
+EarlyStopping counter: 3 out of 5
+Updating learning rate to 6.30249409724609e-05
+Epoch: 10 cost time: 6.569792985916138
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.8294 | mae:1.2939 | rmse:1.9569 | mape:0.2761 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:36.9757 | mae:4.7163 | rmse:6.0808 | mape:0.6011 |
+Epoch: 10 | Train Loss: 0.1053970 | Valid Loss: 1.2938924 Valid Metrics: [mae: 1.2938924, mse: 3.8294241, rmse: 1.9568914, mape: 0.2760807]
+Epoch: 10 | Test Loss: 4.7162878 Test Metrics: [mae: 4.7162886, mse: 36.9756851, rmse: 6.0807633, mape: 0.6010645]
+EarlyStopping counter: 4 out of 5
+Updating learning rate to 5.987369392383787e-05
+Epoch: 11 cost time: 6.539720296859741
+--------start to validate-----------
+-----------valid Results-----------
+|  Normed  | mse:3.7407 | mae:1.2728 | rmse:1.9341 | mape:0.2750 |
+--------start to test-----------
+-----------test Results-----------
+|  Normed  | mse:45.0209 | mae:5.0831 | rmse:6.7098 | mape:0.6426 |
+Epoch: 11 | Train Loss: 0.1045800 | Valid Loss: 1.2728436 Valid Metrics: [mae: 1.2728438, mse: 3.7407260, rmse: 1.9340956, mape: 0.2749837]
+Epoch: 11 | Test Loss: 5.0831076 Test Metrics: [mae: 5.0831070, mse: 45.0208931, rmse: 6.7097611, mape: 0.6426023]
+EarlyStopping counter: 5 out of 5
+Early stopping
+save model in  exp/run_GPU_336_192/DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0/gpu192.bin
+>>>>>>>testing : DPAD_GCN_gpu_ftM_sl336_pl192_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Test Results:
+|  Normed  | mse:45.0209 | mae:5.0831 | rmse:6.7098 | mape:0.6426 | mspe:0.7789 | corr:0.1874 |
+Traceback (most recent call last):
+  File "../singlecard.py", line 131, in <module>
+    mse, mae, rmse, mape = exp.test(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 324, in test
+    visual(trues, preds, os.path.join(result_path, 'result.pdf'))
+  File "/data/dhwlsgur795/repos/25_1_capstone/utils/tools.py", line 116, in visual
+    plt.plot(true, label='GroundTruth', linewidth=1.5, color="#999999")
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/pyplot.py", line 2728, in plot
+    return gca().plot(
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_axes.py", line 1662, in plot
+    lines = [*self._get_lines(*args, data=data, **kwargs)]
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_base.py", line 311, in __call__
+    yield from self._plot_args(
+  File "/data/opt/anaconda3/envs/pytorch1.12.1_p38/lib/python3.8/site-packages/matplotlib/axes/_base.py", line 507, in _plot_args
+    raise ValueError(f"x and y can be no greater than 2D, but have "
+ValueError: x and y can be no greater than 2D, but have shapes (512,) and (512, 192, 2)
+/var/spool/slurm/d/job85399/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sun 18 May 2025 01:26:00 AM KST
+
+==========================================================
+실행 설정: gpu_336-336
+시작 시간: Sun 18 May 2025 01:26:00 AM KST
+==========================================================
+test 382
+>>>>>>>start training : DPAD_GCN_gpu_ftM_sl336_pl336_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1838
+val 24
+test 382
+exp/run_GPU_336_336/DPAD_GCN_gpu_ftM_sl336_pl336_imp6_lr0.0001_bs32_eh256_dh256_l2_dp0.1_itr0
+Epoch: 1 cost time: 9.706047773361206
+--------start to validate-----------
+Traceback (most recent call last):
+  File "../singlecard.py", line 128, in <module>
+    exp.train(setting)
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 219, in train
+    valid_loss, valid_mae, valid_mse, valid_rmse, valid_mape = self.valid(valid_loader, criterion, flag="valid")
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 265, in valid
+    preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+IndexError: tuple index out of range
+/var/spool/slurm/d/job85399/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sun 18 May 2025 01:26:17 AM KST
+
+==========================================================
+실행 설정: gpu_336-720
+시작 시간: Sun 18 May 2025 01:26:17 AM KST
+==========================================================
+Traceback (most recent call last):
+  File "../singlecard.py", line 126, in <module>
+    exp = Exp(args)  # set experiments
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 28, in __init__
+    self.test_loader = self._get_data(flag = 'test')
+  File "/data/dhwlsgur795/repos/25_1_capstone/experiments/exp_ETT.py", line 139, in _get_data
+    print(flag, len(data_set))
+ValueError: __len__() should return >= 0
+/var/spool/slurm/d/job85399/slurm_script: line 49: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 50: logs/results/summary.txt: No such file or directory
+/var/spool/slurm/d/job85399/slurm_script: line 51: logs/results/summary.txt: No such file or directory
+완료 시간: Sun 18 May 2025 01:26:22 AM KST
+
+모든 실험 완료: Sun 18 May 2025 01:26:22 AM KST
